@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>IntersectionObserver Test</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+            }
+
+            header {
+                background-color: #081f47;
+                color: white;
+                padding: 20px;
+                text-align: center;
+            }
+
+            main {
+                max-width: 900px;
+                margin: auto;
+                padding: 20px;
+            }
+
+            section {
+                min-height: 500px;
+                padding: 30px;
+                margin-bottom: 30px;
+                background-color: #f1f4f9;
+                border-radius: 8px;
+            }
+
+            h2 {
+                color: #081f47;
+            }
+
+            img {
+                width: 250px;
+                height: 160px;
+                object-fit: cover;
+                margin: 10px;
+                border-radius: 8px;
+            }
+
+            #sticky-header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                padding: 15px;
+                background-color: #081f47;
+                color: white;
+                display: none;
+                z-index: 1000;
+            }
+
+            #sticky-header.visible {
+                display: block;
+            }
+
+            .stats-container {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .stat-box {
+                padding: 20px;
+                background-color: white;
+                border-radius: 8px;
+                min-width: 150px;
+            }
+
+            .stat-number {
+                font-size: 32px;
+                font-weight: bold;
+                color: #081f47;
+            }
+
+            footer {
+                padding: 30px;
+                text-align: center;
+                background-color: #081f47;
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h1>IntersectionObserver Test</h1>
+            <p>Testing lazy loading, sticky headers and count-up animations</p>
+        </header>
+        <div id="sticky-header"></div>
+        <main>
+            <!-- Section 1: Lazy Image Loading -->
+            <section>
+                <h2>Lazy Image Loading</h2>
+                <p>
+                    Images load only when they enter the viewport.
+                    Scroll down to see the images load.
+                </p>
+                <img data-src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=500" alt="Mountain landscape">
+                <img data-src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=500" alt="Lake and mountains">
+                <img data-src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500" alt="Forest">
+            </section>
+
+            <!-- Section 2: Sticky Section Header -->
+            <section>
+                <h2>About Us</h2>
+                <p>
+                    This section demonstrates the sticky section header.
+                    When this section scrolls above the viewport,its title appears in the fixed mini-header.
+                </p>
+                <p>Scroll down to the next sections to see themini-header title change.</p>
+            </section>
+
+            <section>
+                <h2>Our Services</h2>
+                <p>We provide web development, application development and software solutions.</p>
+                <p>Continue scrolling to test the sticky header.</p>
+            </section>
+
+            <section>
+                <h2>Our Team</h2>
+                <p>Our team works together to develop reliable and effective solutions.</p>
+            </section>
+
+            <!-- Section 3: Count-up Animation -->
+            <section>
+                <h2>Our Statistics</h2>
+                <p>The numbers below count from zero to their target values when this section enters the viewport.</p>
+
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <div class="stat-number" data-target="100">0</div>
+                        <p>Projects</p>
+                    </div>
+
+                    <div class="stat-box">
+                        <div class="stat-number" data-target="250">0</div>
+                        <p>Clients</p>
+                    </div>
+
+                    <div class="stat-box">
+                        <div class="stat-number" data-target="500">0</div>
+                        <p>Completed Tasks</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <script src="./intersection_observer.js"></script>
+    </body>
+</html>
