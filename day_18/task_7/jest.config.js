@@ -1,0 +1,12 @@
+module.exports = {
+    testEnvironment: "node",
+    testMatch: [
+        "**/*.test.js"
+    ],
+    collectCoverage: true,
+    collectCoverageFrom: [
+        "format_date.js"
+    ],
+    coverageDirectory: "coverage",
+    coverageReporters: ["text", "html"]
+};
