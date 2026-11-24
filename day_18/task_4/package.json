@@ -1,0 +1,14 @@
+{
+    "name": "day-18-task-4",
+    "version": "1.0.0",
+    "description": "Jest setup and teardown",
+    "private": true,
+    "scripts": {
+        "test": "jest",
+        "test:coverage": "jest --coverage"
+    },
+    "devDependencies": {
+        "jest": "^30.0.0",
+        "jest-environment-jsdom": "^30.0.0"
+    }
+}
