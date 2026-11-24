@@ -3,7 +3,7 @@
     "jest": "^30.5.2"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage --ci",
     "test:coverage": "jest --coverage"
   }
 }

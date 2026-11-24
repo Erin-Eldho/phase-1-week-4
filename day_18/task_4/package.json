@@ -4,7 +4,7 @@
     "description": "Jest setup and teardown",
     "private": true,
     "scripts": {
-        "test": "jest",
+        "test": "jest --coverage --ci",
         "test:coverage": "jest --coverage"
     },
     "devDependencies": {

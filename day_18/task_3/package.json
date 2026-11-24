@@ -4,7 +4,7 @@
     "description": "Jest async tests and timer mocks",
     "private": true,
     "scripts": {
-        "test": "jest",
+        "test": "jest --coverage --ci",
         "test:coverage": "jest --coverage"
     },
     "devDependencies": {

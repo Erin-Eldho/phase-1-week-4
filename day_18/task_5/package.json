@@ -4,7 +4,7 @@
     "description": "Jest DOM testing with JSDOM",
     "private": true,
     "scripts": {
-        "test": "jest",
+        "test": "jest --coverage --ci",
         "test:coverage": "jest --coverage"
     },
     "devDependencies": {
