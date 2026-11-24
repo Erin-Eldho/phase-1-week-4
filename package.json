@@ -1,0 +1,20 @@
+{
+  "name": "phase-1-week-4",
+  "version": "1.0.0",
+  "description": "WEEK 4 - JavaScript Advanced - Patterns, Observers, Web APIs &amp; Testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test:all",
+    "test:all": "npm --prefix day_18/task_1 test && npm --prefix day_18/task_2 test && npm --prefix day_18/task_3 test && npm --prefix day_18/task_4 test && npm --prefix day_18/task_5 test && npm --prefix day_18/task_7 test",
+    "lint:tests": "eslint day_18/**/*.test.js",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^9.39.5",
+    "eslint-plugin-jest": "^29.17.1",
+    "husky": "^9.1.7"
+  }
+}

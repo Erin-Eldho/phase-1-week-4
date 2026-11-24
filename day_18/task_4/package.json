@@ -1,0 +1,17 @@
+{
+    "name": "day-18-task-4",
+    "version": "1.0.0",
+    "description": "Jest setup and teardown",
+    "private": true,
+    "scripts": {
+        "test": "jest --coverage --ci",
+        "test:coverage": "jest --coverage"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.29.13",
+        "@babel/preset-env": "^7.29.14",
+        "babel-jest": "^30.5.2",
+        "jest": "^30.0.0",
+        "jest-environment-jsdom": "^30.0.0"
+    }
+}
