@@ -2,6 +2,7 @@ const canvas = document.getElementById("sales-chart");
 const context = canvas.getContext("2d");
 const tooltip = document.getElementById("chart-tooltip");
 const exportButton = document.getElementById("export-chart");
+const chartWrapper = document.querySelector(".chart-wrapper");
 
 const salesData = [
     { month: "Jan", sales: 12000 },
@@ -21,14 +22,18 @@ const salesData = [
 const maxSales = 40000;
 const duration = 2000;
 
+// Calculate average monthly sales
+const averageSales = salesData.reduce((total, item) => total + item.sales, 0) / salesData.length;
+
 let chartWidth;
 let chartHeight;
 let progress = 0;
 let hoveredIndex = -1;
-let animationStart;
+let animationStart = null;
 
 const chartArea = {left: 100, right: 20, top: 30, bottom: 65};
 
+// Set canvas dimensions
 function resizeCanvas() {
     const rect = canvas.getBoundingClientRect();
     const pixelRatio = window.devicePixelRatio || 1;
@@ -40,6 +45,7 @@ function resizeCanvas() {
     drawChart(progress);
 }
 
+// Draw chart elements
 function drawChart(animationProgress) {
     context.clearRect(0, 0, chartWidth, chartHeight);
     context.fillStyle = "#FFFFFF";
@@ -92,7 +98,9 @@ function drawChart(animationProgress) {
         const x = chartArea.left + index * barSpace + (barSpace - barWidth) / 2;
         const barHeight = (item.sales / maxSales) * plotHeight * animationProgress;
         const y = baseY - barHeight;
-        const gradient = context.createLinearGradient( 0, y, 0, baseY);
+
+        // Create gradient for each bar
+        const gradient = context.createLinearGradient(0, y, 0, baseY);
 
         gradient.addColorStop(0, "#C58A98");
         gradient.addColorStop(1, "#722F45");
@@ -106,17 +114,40 @@ function drawChart(animationProgress) {
             context.strokeRect(x, y, barWidth, barHeight);
         }
 
+        // Draw month labels.
         context.fillStyle = "#38232C";
         context.font = "12px Arial";
         context.textAlign = "center";
         context.textBaseline = "top";
-        context.fillText( item.month, x + barWidth / 2, baseY + 10);
+        context.fillText(item.month, x + barWidth / 2, baseY + 10);
     });
+
+    // Draw dashed average target line.
+    const averageY = baseY - (averageSales / maxSales) * plotHeight;
+
+    context.save();
+    context.beginPath();
+    context.setLineDash([8, 5]);
+    context.strokeStyle = "#E67E22";
+    context.lineWidth = 2;
+
+    context.moveTo(chartArea.left, averageY);
+    context.lineTo(chartWidth - chartArea.right, averageY);
+    context.stroke();
+    context.setLineDash([]);
+
+    // Label the average target line.
+    context.fillStyle = "#E67E22";
+    context.font = "bold 12px Arial";
+    context.textAlign = "right";
+    context.textBaseline = "bottom";
+    context.fillText(`Average Target: ₹${averageSales.toLocaleString("en-IN")}`, chartWidth - chartArea.right, averageY - 5);
+    context.restore();
 }
 
 // Animate bars from zero height
 function animateChart(timestamp) {
-    if (!animationStart) {
+    if (animationStart === null) {
         animationStart = timestamp;
     }
     const elapsed = timestamp - animationStart;
@@ -162,8 +193,11 @@ canvas.addEventListener("mousemove", event => {
         const item = salesData[hoveredIndex];
         tooltip.textContent = `${item.month}: ₹${item.sales.toLocaleString("en-IN")}`;
         tooltip.style.display = "block";
-        tooltip.style.left = `${mouseX + 15}px`;
-        tooltip.style.top = `${mouseY + 15}px`;
+
+        // Position tooltip relative to its wrapper.
+        const wrapperRect = chartWrapper.getBoundingClientRect();
+        tooltip.style.left = `${event.clientX - wrapperRect.left + 15}px`;
+        tooltip.style.top = `${event.clientY - wrapperRect.top + 15}px`;
     } else {
         tooltip.style.display = "none";
     }
@@ -171,6 +205,7 @@ canvas.addEventListener("mousemove", event => {
     drawChart(progress);
 });
 
+// Hide tooltip when mouse leaves canvas
 canvas.addEventListener("mouseleave", () => {
     hoveredIndex = -1;
     tooltip.style.display = "none";
