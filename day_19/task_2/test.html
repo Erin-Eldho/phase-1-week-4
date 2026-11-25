@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>requestAnimationFrame Animation</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                padding: 20px;
+                font-family: Arial, sans-serif;
+                background-color: #F8E8EC;
+                color: #38232C;
+            }
+
+            h1, h2 {
+                margin-bottom: 15px;
+            }
+
+            .counter-section,
+            .particle-section {
+                margin-bottom: 25px;
+            }
+
+            #counter {
+                font-size: 32px;
+                font-weight: bold;
+            }
+
+            #particle-canvas {
+                display: block;
+                width: 100%;
+                max-width: 800px;
+                height: 400px;
+                background-color: #FFFFFF;
+                border: 1px solid #E8CDD5;
+                border-radius: 8px;
+            }
+
+            button {
+                margin-right: 8px;
+                padding: 10px 18px;
+                border: none;
+                border-radius: 5px;
+                background-color: #722F45;
+                color: #FFFFFF;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #5A2437;
+            }
+
+            button:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>requestAnimationFrame Animation</h1>
+        <section class="counter-section">
+            <h2>Animated Counter</h2>
+            <p id="counter">0</p>
+        </section>
+        <section class="particle-section">
+            <h2>Particle System</h2>
+            <canvas id="particle-canvas" width="800" height="400"></canvas>
+        </section>
+        <button id="pause-animation">Pause</button>
+        <button id="resume-animation" disabled>Resume</button>
+        <script src="animation.js"></script>
+    </body>
+</html>

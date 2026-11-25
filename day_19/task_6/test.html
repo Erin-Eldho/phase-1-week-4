@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Web Workers - Sorting 100,000 Objects</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                padding: 25px;
+                font-family: Arial, sans-serif;
+                background-color: #F8E8EC;
+                color: #38232C;
+            }
+
+            h1 {
+                margin-bottom: 15px;
+            }
+
+            p {
+                margin-bottom: 15px;
+            }
+
+            .controls {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+
+            button {
+                padding: 10px 18px;
+                border: none;
+                border-radius: 5px;
+                background-color: #722F45;
+                color: #FFFFFF;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #5A2437;
+            }
+
+            button:disabled {
+                background-color: #A98A94;
+                cursor: not-allowed;
+            }
+
+            .panel {
+                margin-bottom: 20px;
+                padding: 20px;
+                background-color: #FFFFFF;
+                border: 1px solid #E8CDD5;
+                border-radius: 8px;
+            }
+
+            .panel h2 {
+                margin-bottom: 12px;
+            }
+
+            #heartbeat {
+                font-weight: bold;
+            }
+
+            #results {
+                overflow-x: auto;
+                white-space: pre-wrap;
+                overflow-wrap: anywhere;
+            }
+
+            .status {
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Web Workers - Off-Main-Thread Sorting</h1>
+        <p>Sort 100,000 objects and compare main-thread execution with a Web Worker.</p>
+
+        <div class="panel">
+            <h2>UI Responsiveness</h2>
+            <p>Heartbeat: <span id="heartbeat">0</span></p>
+            <p id="ui-status" class="status">UI is responsive.</p>
+        </div>
+
+        <div class="controls">
+            <button id="main-sort">Sort on Main Thread</button>
+            <button id="worker-sort">Sort using Web Worker</button>
+        </div>
+
+        <div class="panel">
+            <h2>Main-Thread Sort</h2>
+            <p id="main-status">Waiting to start.</p>
+        </div>
+
+        <div class="panel">
+            <h2>Web Worker Sort</h2>
+            <p id="worker-status">Waiting to start.</p>
+        </div>
+
+        <div class="panel">
+            <h2>Sorted Results Preview</h2>
+            <pre id="results">No results yet.</pre>
+        </div>
+
+        <script src="main.js"></script>
+    </body>
+</html>
