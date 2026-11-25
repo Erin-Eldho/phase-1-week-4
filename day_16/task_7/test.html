@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Virtual Scroll</title>
+        <style>
+            #list-container {
+                height: 400px;
+                overflow-y: auto;
+                border: 1px solid #ccc;
+                position: relative;
+            }
+
+            #list-spacer {
+                width: 100%;
+            }
+
+            #visible-items {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+            }
+
+            .list-item {
+                height: 40px;
+                box-sizing: border-box;
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Virtual Scroll - 10,000 Items</h1>
+        <div id="list-container">
+            <div id="list-spacer"></div>
+            <div id="visible-items"></div>
+        </div>
+        <script src="virtual_scroll.js"></script>
+    </body>
+</html>
