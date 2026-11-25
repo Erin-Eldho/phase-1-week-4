@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WeakMap & Memory Management</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                padding: 20px;
+                font-family: Arial, sans-serif;
+                background-color: #F8E8EC;
+                color: #38232C;
+            }
+
+            h1, h2 {
+                margin-bottom: 15px;
+            }
+
+            section {
+                margin-bottom: 30px;
+                padding: 20px;
+                background-color: #FFFFFF;
+                border: 1px solid #E8CDD5;
+                border-radius: 8px;
+            }
+
+            p {
+                margin-bottom: 12px;
+            }
+
+            button {
+                margin: 5px;
+                padding: 10px 16px;
+                border: none;
+                border-radius: 5px;
+                background-color: #722F45;
+                color: #FFFFFF;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #5A2437;
+            }
+
+            #map-container,
+            #weakmap-container {
+                margin-top: 15px;
+            }
+
+            .test-node {
+                padding: 8px;
+                margin-bottom: 4px;
+                background-color: #F8E8EC;
+            }
+
+            #status {
+                margin-top: 15px;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>WeakMap & Memory Management</h1>
+        <section>
+            <h2>1. Memory Leak with Map</h2>
+            <p> A Map holds strong references to DOM elements, even after they are removed from the 
+                document.</p>
+            <button id="create-map-nodes">Create and Remove 1000 Nodes</button>
+            <button id="clear-map">Clear Map</button>
+            <p id="map-status">Map entries: 0</p>
+            <div id="map-container"></div>
+        </section>
+
+        <section>
+            <h2>2. WeakMap and Garbage Collection</h2>
+            <p> WeakMap holds weak references to its keys. Removed nodes can become eligible for 
+                garbage collection when no other strong references remain.</p>
+            <button id="create-weakmap-nodes">Create and Remove 1000 Nodes</button>
+            <p id="weakmap-status">WeakMap entries created: 0</p>
+            <div id="weakmap-container"></div>
+        </section>
+
+        <section>
+            <h2>3. Private Class Data Using WeakMap</h2>
+            <p>Class data is stored externally and accessed through class methods.</p>
+            <button id="create-user">Create User</button>
+            <button id="update-user">Update Private Data</button>
+            <p id="user-status">No user created.</p>
+        </section>
+
+        <p id="status">Ready to run the demonstrations.</p>
+        <script src="memory-management.js"></script>
+    </body>
+</html>
