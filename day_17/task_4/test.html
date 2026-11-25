@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Performance APIs</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 30px;
+            }
+
+            #virtual-list {
+                height: 300px;
+                overflow-y: auto;
+                border: 1px solid #ccc;
+                position: relative;
+            }
+
+            #virtual-spacer {
+                width: 100%;
+            }
+
+            #virtual-items {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+            }
+
+            .list-item {
+                height: 30px;
+                padding: 5px;
+                box-sizing: border-box;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Performance APIs</h1>
+        <section>
+            <h2>DOM Rendering Benchmark</h2>
+            <button id="run-benchmark" type="button">Run Benchmark</button>
+
+            <h3>Regular DOM: 1000 items</h3>
+            <p id="regular-time">Rendering time: Not measured</p>
+            <div id="regular-list"></div>
+
+            <h3>Virtual Scroll: 1000 items</h3>
+            <p id="virtual-time">Rendering time: Not measured</p>
+            <div id="virtual-list">
+                <div id="virtual-spacer"></div>
+                <div id="virtual-items"></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Performance Observer</h2>
+            <p id="lcp-result">LCP: Waiting for measurement...</p>
+            <p id="cls-result">CLS: 0.0000</p>
+        </section>
+
+        <script type="module" src="performance.js"></script>
+    </body>
+</html>
