@@ -10,6 +10,9 @@ const initialState = {
         path: "",
         params: {},
         component: null
+    },
+    settings: {
+        darkMode: false
     }
 };
 
@@ -17,7 +20,7 @@ function reducer(state, action) {
     switch (action.type) {
         case "SET_ROUTE":
             return {
-                ...state, 
+                ...state,
                 route: action.payload
             };
         default:
@@ -43,12 +46,12 @@ store.subscribe(() => {
         return;
     }
     previousRoute = currentRoute;
-    
+
     if (!currentRoute.component) {
         app.textContent = "404 - Page Not Found";
         return;
     }
-    const page = currentRoute.component(store.getState(), currentRoute.params);
+    const page = currentRoute.component(store.getState(), currentRoute.params, router.navigate);
     app.replaceChildren(page);
 });
 
@@ -56,9 +59,13 @@ router.initRouter();
 
 document.addEventListener("click", (event) => {
     const link = event.target.closest("[data-link]");
-    if (!link) return;
+    if (!link) {
+        return;
+    }
     event.preventDefault();
     router.navigate(link.getAttribute("href"));
 });
 
-export { store, router };
+// Expose for browser-console testing.
+window.store = store;
+window.router = router;
