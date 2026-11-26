@@ -1,4 +1,4 @@
-export function renderSettingsPage(state, params) {
+export function renderSettingsPage(state, _params, _navigate, dispatch) {
     const page = document.createElement("section");
     page.className = "page settings-page";
 
@@ -13,7 +13,16 @@ export function renderSettingsPage(state, params) {
 
     const themeToggle = document.createElement("input");
     themeToggle.type = "checkbox";
-    themeToggle.checked = state.settings?.darkMode ?? false;
+    themeToggle.checked = state.settings.darkMode;
+
+    themeToggle.addEventListener("change", () => {
+        dispatch({
+            type: "UPDATE_SETTINGS",
+            payload: {
+                darkMode: themeToggle.checked
+            }
+        });
+    });
 
     page.append(heading, description, themeLabel, themeToggle);
     return page;

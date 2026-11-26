@@ -76,3 +76,117 @@ nav a:hover {
     background-color: white;
     border-radius: 8px;
 }
+
+/* Movie form */
+.movie-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 500px;
+    margin: 20px 0;
+}
+
+.movie-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.movie-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font: inherit;
+}
+
+.movie-form input:focus {
+    outline: 2px solid #163b70;
+    outline-offset: 2px;
+}
+
+.delete-button {
+    background-color: #b42318;
+    margin-left: 8px;
+}
+
+.delete-button:hover {
+    background-color: #8f1d14;
+}
+
+.card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.card-actions .button {
+    margin: 0;
+}
+
+.detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.detail-actions .button {
+    margin: 0;
+}
+
+/* Loading and error states */
+.loading-message {
+    color: #163b70;
+    font-weight: 600;
+}
+
+.error-message {
+    color: #b42318;
+    font-weight: 600;
+}
+
+/* Page transition */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.page {
+    animation: fadeIn 0.3s ease-in;
+}
+
+/* Dark mode */
+body.dark-mode {
+    background-color: #081f47;
+    color: #fff;
+}
+
+body.dark-mode .movie-card,
+body.dark-mode .modal-content {
+    background-color: #102d5a;
+    color: #fff;
+    border-color: #34527e;
+}
+
+body.dark-mode input {
+    background-color: #102d5a;
+    color: #fff;
+    border-color: #34527e;
+}
+
+body.dark-mode nav a {
+    color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page {
+        animation: none;
+    }
+}
