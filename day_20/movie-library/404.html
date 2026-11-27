@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Redirecting - Movie Library</title>
+    </head>
+    <body>
+        <script>
+            const basePath = "/phase-1-week-4/";
+            const currentPath = window.location.pathname;
+            const relativePath = currentPath.startsWith(basePath) ? currentPath.slice(basePath.length) : "";
+            const redirectPath = "/" + relativePath + window.location.search + window.location.hash;
+            window.location.replace(basePath + "?p=" + encodeURIComponent(redirectPath));
+        </script>
+    </body>
+</html>
