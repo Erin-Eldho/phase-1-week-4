@@ -5,18 +5,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Movie Library</title>
         <link rel="stylesheet" href="./css/styles.css">
+        <script>
+            const basePath = "/phase-1-week-4/";
+            const params = new URLSearchParams(window.location.search);
+            const redirectPath = params.get("p");
+            if (redirectPath) {
+                const cleanPath = redirectPath.replace(/^\/+/, "");
+                window.history.replaceState(null, "", basePath + cleanPath);
+            }
+        </script>
     </head>
-    
     <body>
         <nav>
             <a href="/home" data-link>Home</a>
             <a href="/list" data-link>Movies</a>
             <a href="/settings" data-link>Settings</a>
         </nav>
-        
-        <main id="app">
-            
-        </main>
+        <main id="app"></main>
         <script type="module" src="./js/main.js"></script>
     </body>
 </html>
